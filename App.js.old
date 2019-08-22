@@ -1,0 +1,50 @@
+import React from 'react';
+import PropTypes from "prop-types";
+
+const foodILike = [
+	{
+		id: 1,
+		name: "Kimchi",
+		image: "http://recipe1.ezmember.co.kr/cache/recipe/2015/04/02/238f0a3e8b567db1229b0f27220033341.jpg",
+		rating: 5
+	},
+	{
+		id: 2,
+		name: "삼겹살",
+		image: "https://w.namu.la/s/fe8310b89195c28d7367cf776d880f255832413466b970011e0ce22ce6de4bb5598c8c13b954fecfb66b1090623cc8b539ecf899b41781a4b2359c7d832803623905bfd94bfc7a32bf78500bf73a0939044236e0ade5833d349f33d028d48575",
+		rating: 4.7
+	},
+	{
+		id: 3,
+		name: "비빔밥",
+		image: "http://recipe1.ezmember.co.kr/cache/recipe/2017/04/13/b5129c4103cd012f02ba18764e65d79e1.jpg",
+		rating: 5.8
+	}
+	];
+
+function Food({ name, picture, rating }) {
+	return (
+		<div>
+		<h2>I like {name}!</h2>
+		<h4>{rating}/5.0</h4>
+		<img src ={picture} alt={name} width="100%" />
+		</div>
+	);
+}
+
+Food.propTypes = {
+	name: PropTypes.string.isRequired,
+	picture: PropTypes.string.isRequired,
+	rating: PropTypes.number.isRequired
+}
+
+function App() {
+  return (
+    <div>
+	  <h1>Hi!</h1>
+	  {foodILike.map(dish => (<Food key={dish.id} name={dish.name} picture={dish.image} rating={dish.rating} />))}
+    </div>
+  );
+}
+
+export default App;
